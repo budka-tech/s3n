@@ -1,0 +1,47 @@
+env: local
+
+app:
+  name: "s3n"
+  version: "1.0.0"
+
+logger:
+  level: 0
+  dir: "logs"
+  maxSize: 10
+  maxBackups: 3
+  maxAge: 365
+  compress: true
+  rotationTime: "24h"
+  consoleLevel: 0
+  fileLevel: 0
+  enableConsole: true
+  enableFile: true
+  timeFormat: "2006-01-02T15:04:05.000Z07:00"
+
+sentry:
+  host: "-"
+  key: "-"
+
+database:
+  type: "-"
+  host: "-"
+  port: 0
+  name: "-"
+  user: "-"
+  password: "-"
+  migrationPath: "migrations/pg"
+  maxAttempts: 1
+  attemptDelay: 1s
+
+s3:
+  redirectFormat: "bucket = %[1]s , file = %[2]s"
+  fileFormat: "%s.webp"
+  s3Server:
+    endpoint: "-"
+    region: "-"
+    accessKey: "-"
+    secretKey: "-"
+
+imageProcessing:
+  defaultQuality: 100
+  defaultMaxSize: 0

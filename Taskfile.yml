@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  run:
+    desc: Запуск сервиса
+    cmds:
+      - go run ./cmd/run.go -config=./config/local.yml
+  migrate:
+    cmds:
+      - task: migrate:{{.CLI_ARGS}}
+
+  migrate:run:
+    desc: Запуск миграций
+    cmds:
+      - go run ./cmd/migrator/run/main.go -config=./config/local.yml
+
+  migrate:create:
+    desc: Создание миграций
+    cmds:
+      - go run ./cmd/migrator/create/main.go -config=./config/local.yml {{.NAME}}
+    vars:
+      NAME:
+        sh: |
+          echo {{.CLI_ARGS}}
