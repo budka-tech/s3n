@@ -45,3 +45,6 @@ s3:
 imageProcessing:
   defaultQuality: 100
   defaultMaxSize: 0
+
+httpRedirect:
+  port: 8080
