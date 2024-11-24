@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"S3Proxy/internal/db/models"
 	"context"
 	"github.com/google/uuid"
+	"s3n/internal/db/models"
 )
 
 // Repository определяет интерфейс для работы с bucket и image

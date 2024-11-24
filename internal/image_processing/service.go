@@ -1,7 +1,6 @@
 package image_processing
 
 import (
-	"S3Proxy/internal/config"
 	"bytes"
 	"context"
 	"fmt"
@@ -14,6 +13,7 @@ import (
 	"image"
 	"image/jpeg"
 	"image/png"
+	"s3n/internal/config"
 )
 
 type ImageService struct {

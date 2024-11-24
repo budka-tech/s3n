@@ -1,15 +1,15 @@
 package main
 
 import (
-	"S3Proxy/internal/config"
-	"S3Proxy/internal/endpoint"
-	"S3Proxy/internal/image_processing"
-	"S3Proxy/internal/s3"
 	"context"
 	"fmt"
 	"github.com/budka-tech/configo"
 	"github.com/budka-tech/envo"
 	"github.com/budka-tech/logit-go"
+	"s3n/internal/config"
+	"s3n/internal/endpoint"
+	"s3n/internal/image_processing"
+	"s3n/internal/s3"
 )
 
 func main() {

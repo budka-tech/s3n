@@ -1,11 +1,11 @@
 package repository
 
 import (
-	"S3Proxy/internal/db/models"
 	"context"
 	"errors"
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgxpool"
+	"s3n/internal/db/models"
 )
 
 // PostgresRepository — реализация Repository для PostgreSQL с использованием pgxpool

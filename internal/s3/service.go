@@ -1,7 +1,6 @@
 package s3
 
 import (
-	cfg "S3Proxy/internal/config"
 	"bytes"
 	"context"
 	"fmt"
@@ -14,6 +13,7 @@ import (
 	logit "github.com/budka-tech/logit-go"
 	"github.com/google/uuid"
 	"io"
+	cfg "s3n/internal/config"
 )
 
 type S3Service struct {

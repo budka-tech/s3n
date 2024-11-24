@@ -1,13 +1,13 @@
 package endpoint
 
 import (
-	"S3Proxy/internal/config"
-	"S3Proxy/internal/s3"
 	"context"
 	"fmt"
 	"github.com/budka-tech/logit-go"
 	chi "github.com/go-chi/chi/v5"
 	"net/http"
+	"s3n/internal/config"
+	"s3n/internal/s3"
 	"strconv"
 )
 

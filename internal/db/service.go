@@ -1,10 +1,10 @@
 package db
 
 import (
-	"S3Proxy/internal/db/models"
-	"S3Proxy/internal/db/repository"
 	"context"
 	"github.com/google/uuid"
+	"s3n/internal/db/models"
+	"s3n/internal/db/repository"
 )
 
 // DBService использует репозиторий для операций с bucket

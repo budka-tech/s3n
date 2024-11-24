@@ -1,4 +1,4 @@
-module S3Proxy
+module s3n
 
 go 1.23.1
 

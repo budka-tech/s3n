@@ -1,11 +1,6 @@
 package endpoint
 
 import (
-	"S3Proxy/internal/db"
-	"S3Proxy/internal/db/models"
-	"S3Proxy/internal/endpoint/api_models"
-	"S3Proxy/internal/image_processing"
-	"S3Proxy/internal/s3"
 	"context"
 	"fmt"
 	"github.com/budka-tech/logit-go"
@@ -13,6 +8,11 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"math"
+	"s3n/internal/db"
+	"s3n/internal/db/models"
+	"s3n/internal/endpoint/api_models"
+	"s3n/internal/image_processing"
+	"s3n/internal/s3"
 	"sync"
 )
 
