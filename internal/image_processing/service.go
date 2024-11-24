@@ -57,6 +57,8 @@ func (s *ImageService) Transform(ctx context.Context, file []byte, fileFormat st
 		img, err = jpeg.Decode(bytes.NewReader(file))
 	case "webp":
 		img, err = webp.Decode(bytes.NewReader(file), &decoder.Options{})
+	default:
+		err = fmt.Errorf("неизвестный формат изображения")
 	}
 	if err != nil {
 		err = fmt.Errorf("не удалось прочитать изображение: %w", err)
