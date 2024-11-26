@@ -49,6 +49,11 @@ func main() {
 	_ = imageService
 
 	endpointService, err := endpoint.NewEndpoint(ctx, s3Service, dbService, imageService, logger)
+	if err != nil {
+		logger.Fatal(ctx, fmt.Errorf("ошибка при создании эндпойнта: %s", err))
+		panic(err)
+	}
+
 	grpcServer := endpoint.NewGrpcServer(endpointService, logger)
 	logger.Info(ctx, "grpc сервер успешно запущен")
 
