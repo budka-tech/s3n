@@ -92,6 +92,7 @@ func imageWithBucketToProto(imageWithBucket *api_models.ImageWithBucket) *pb.Ima
 }
 
 func (g GrpcServer) RegisterBucket(ctx context.Context, request *pb.RegisterBucketRequest) (*pb.RegisterBucketResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	bucket, status := g.endpoint.RegisterBucket(ctx, request.BucketName)
 	return &pb.RegisterBucketResponse{
 		Bucket: bucketToProto(bucket),
@@ -100,6 +101,7 @@ func (g GrpcServer) RegisterBucket(ctx context.Context, request *pb.RegisterBuck
 }
 
 func (g GrpcServer) HasBucket(ctx context.Context, request *pb.HasBucketRequest) (*pb.HasBucketResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	exist, status := g.endpoint.HasBucket(ctx, request.BucketName)
 	return &pb.HasBucketResponse{
 		Exists: exist,
@@ -108,6 +110,7 @@ func (g GrpcServer) HasBucket(ctx context.Context, request *pb.HasBucketRequest)
 }
 
 func (g GrpcServer) UnregisterBucket(ctx context.Context, request *pb.UnregisterBucketRequest) (*commonv1.Response, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	status := g.endpoint.UnregisterBucket(ctx, request.BucketName)
 	return &commonv1.Response{
 		Status: status,
@@ -115,6 +118,7 @@ func (g GrpcServer) UnregisterBucket(ctx context.Context, request *pb.Unregister
 }
 
 func (g GrpcServer) GetAllBuckets(ctx context.Context, request *pb.GetAllBucketsRequest) (*pb.GetAllBucketsResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	buckets, status := g.endpoint.GetAllBuckets(ctx)
 	return &pb.GetAllBucketsResponse{
 		Buckets: bucketsToProto(buckets),
@@ -123,6 +127,7 @@ func (g GrpcServer) GetAllBuckets(ctx context.Context, request *pb.GetAllBuckets
 }
 
 func (g GrpcServer) CreateImage(ctx context.Context, request *pb.CreateImageRequest) (*pb.CreateImageResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	var MaxSize *int
 	if request.MaxSize != nil {
 		maxSize := int(*request.MaxSize)
@@ -136,6 +141,7 @@ func (g GrpcServer) CreateImage(ctx context.Context, request *pb.CreateImageRequ
 }
 
 func (g GrpcServer) GetImage(ctx context.Context, request *pb.GetImageRequest) (*pb.GetImageResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	const op = "GrpcServer.GetImage"
 	ctx = g.logger.NewOpCtx(ctx, op)
 
@@ -154,6 +160,7 @@ func (g GrpcServer) GetImage(ctx context.Context, request *pb.GetImageRequest) (
 }
 
 func (g GrpcServer) GetImageWithBucket(ctx context.Context, request *pb.GetImageWithBucketRequest) (*pb.GetImageWithBucketResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	const op = "GrpcServer.GetImageWithBucket"
 	ctx = g.logger.NewOpCtx(ctx, op)
 
@@ -174,6 +181,7 @@ func (g GrpcServer) GetImageWithBucket(ctx context.Context, request *pb.GetImage
 }
 
 func (g GrpcServer) DeleteImage(ctx context.Context, request *pb.DeleteImageRequest) (*commonv1.Response, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	const op = "GrpcServer.DeleteImage"
 	ctx = g.logger.NewOpCtx(ctx, op)
 
@@ -193,6 +201,7 @@ func (g GrpcServer) DeleteImage(ctx context.Context, request *pb.DeleteImageRequ
 }
 
 func (g GrpcServer) GetAllImages(ctx context.Context, request *pb.GetAllImagesRequest) (*pb.GetAllImagesResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	images, status := g.endpoint.GetAllImages(ctx, int(request.Limit))
 	return &pb.GetAllImagesResponse{
 		Images: imagesToProto(images),
@@ -201,6 +210,7 @@ func (g GrpcServer) GetAllImages(ctx context.Context, request *pb.GetAllImagesRe
 }
 
 func (g GrpcServer) GetImagesInBucket(ctx context.Context, request *pb.GetImagesInBucketRequest) (*pb.GetImagesInBucketResponse, error) {
+	ctx = g.logger.NewTraceCtx(ctx, nil)
 	images, status := g.endpoint.GetImagesInBucket(ctx, request.BucketName, int(request.Limit))
 	return &pb.GetImagesInBucketResponse{
 		Images: imagesToProto(images),
