@@ -16,6 +16,7 @@ require (
 	github.com/budka-tech/snip-common-go v0.0.34
 	github.com/budka-tech/spg v0.0.1
 	github.com/go-chi/chi/v5 v5.1.0
+	github.com/gogo/protobuf v1.3.2
 	github.com/golang-migrate/migrate/v4 v4.18.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.7.1
