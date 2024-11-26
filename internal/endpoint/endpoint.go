@@ -66,7 +66,7 @@ func NewEndpoint(ctx context.Context, s3Service *s3.S3Service, dbService *db.DBS
 		logger.Error(ctx, err)
 		return nil, err
 	}
-	var bucketCache map[string]int16
+	bucketCache := map[string]int16{}
 	for _, bucket := range buckets {
 		bucketCache[bucket.BucketName] = bucket.ID
 	}
@@ -119,6 +119,7 @@ func (e *Endpoint) UnregisterBucket(ctx context.Context, bucketName string) stat
 		if !ok {
 			err := fmt.Errorf("не удалось найти бакет в кеше")
 			e.logger.Error(ctx, err, zap.String("bucket_name", bucketName))
+			e.bucketCacheLock.Unlock()
 			return status.NotFound
 		}
 
@@ -126,6 +127,7 @@ func (e *Endpoint) UnregisterBucket(ctx context.Context, bucketName string) stat
 		if err != nil {
 			err = fmt.Errorf("не удалось удалить бакет из БД: %w", err)
 			e.logger.Error(ctx, err, zap.String("bucket_name", bucketName))
+			e.bucketCacheLock.Unlock()
 			return status.InternalError
 		}
 
@@ -151,7 +153,7 @@ func (e *Endpoint) GetAllBuckets(ctx context.Context) ([]api_models.Bucket, stat
 	}
 	e.bucketCacheLock.RUnlock()
 
-	return buckets, status.NotFound
+	return buckets, status.OK
 }
 
 func (e *Endpoint) CreateImage(ctx context.Context, bucketName string, file []byte, fileExtension string, quality *float32, maxSize *int) (*api_models.Image, status.Status) {
