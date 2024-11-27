@@ -13,7 +13,7 @@ type DBService struct {
 }
 
 // NewDBService создаёт новый DBService
-func NewDBService(repo repository.Repository) *DBService {
+func NewDBService(repo repository.Repository) Service {
 	return &DBService{repo: repo}
 }
 

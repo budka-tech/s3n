@@ -25,7 +25,7 @@ type S3Service struct {
 	uploader       *manager.Uploader
 }
 
-func NewS3Service(ctx context.Context, logger logit.Logger, s3Config *cfg.S3ServiceConfig) (*S3Service, error) {
+func NewS3Service(ctx context.Context, logger logit.Logger, s3Config *cfg.S3ServiceConfig) (Service, error) {
 	const op = "S3Service.NewS3Service"
 	ctx = logger.NewOpCtx(ctx, op)
 

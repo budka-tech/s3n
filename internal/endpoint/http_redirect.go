@@ -13,12 +13,12 @@ import (
 
 type RedirectServer struct {
 	router    *chi.Mux
-	s3Service *s3.S3Service
+	s3Service s3.Service
 	logger    logit.Logger
 	port      int
 }
 
-func NewRedirectServer(s3Service *s3.S3Service, config *config.HttpRedirectConfig, logger logit.Logger) *RedirectServer {
+func NewRedirectServer(s3Service s3.Service, config *config.HttpRedirectConfig, logger logit.Logger) *RedirectServer {
 	r := chi.NewRouter()
 
 	s := &RedirectServer{

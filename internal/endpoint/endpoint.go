@@ -17,9 +17,9 @@ import (
 )
 
 type Endpoint struct {
-	s3Service       *s3.S3Service
-	dbService       *db.DBService
-	imageService    *image_processing.ImageService
+	s3Service       s3.Service
+	dbService       db.Service
+	imageService    image_processing.Service
 	logger          logit.Logger
 	bucketCache     map[string]int16
 	bucketCacheLock sync.RWMutex
@@ -56,7 +56,7 @@ func bucketToAPI(bucket *models.Bucket) *api_models.Bucket {
 	}
 }
 
-func NewEndpoint(ctx context.Context, s3Service *s3.S3Service, dbService *db.DBService, imageService *image_processing.ImageService, logger logit.Logger) (*Endpoint, error) {
+func NewEndpoint(ctx context.Context, s3Service s3.Service, dbService db.Service, imageService image_processing.Service, logger logit.Logger) (*Endpoint, error) {
 	const op = "Endpoint.NewEndpoint"
 	ctx = logger.NewOpCtx(ctx, op)
 

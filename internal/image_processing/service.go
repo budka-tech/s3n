@@ -23,7 +23,7 @@ type ImageService struct {
 	logger logit.Logger
 }
 
-func NewImageService(config *config.ImageProcessingConfig, logger logit.Logger) *ImageService {
+func NewImageService(config *config.ImageProcessingConfig, logger logit.Logger) Service {
 	return &ImageService{
 		DefaultQuality: config.DefaultQuality,
 		DefaultMaxSize: config.DefaultMaxSize,
