@@ -22,3 +22,8 @@ tasks:
       NAME:
         sh: |
           echo {{.CLI_ARGS}}
+
+  test:image_transform:
+    desc: Тест нагрузки обработки изображения
+    cmds:
+      - go run ./cmd/tests/image_transform_tests.go {{.CLI_ARGS}}
