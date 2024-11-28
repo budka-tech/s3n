@@ -13,7 +13,7 @@ require (
 	github.com/budka-tech/configo v0.1.6
 	github.com/budka-tech/envo v0.0.1
 	github.com/budka-tech/logit-go v0.1.6
-	github.com/budka-tech/snip-common-go v0.0.34
+	github.com/budka-tech/snip-common-go v0.0.35
 	github.com/budka-tech/spg v0.0.1
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/gogo/protobuf v1.3.2

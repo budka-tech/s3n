@@ -156,12 +156,12 @@ func (e *Endpoint) GetAllBuckets(ctx context.Context) ([]api_models.Bucket, stat
 	return buckets, status.OK
 }
 
-func (e *Endpoint) CreateImage(ctx context.Context, bucketName string, file []byte, fileExtension string, quality *float32, maxSize *int) (*api_models.Image, status.Status) {
+func (e *Endpoint) CreateImage(ctx context.Context, bucketName string, file []byte, fileExtension string, quality *float32, maxSize *int, id *uuid.UUID) (*api_models.Image, status.Status) {
 	const op = "Endpoint.CreateImage"
 	ctx = e.logger.NewOpCtx(ctx, op)
 
 	e.bucketCacheLock.RLock()
-	id, ok := e.bucketCache[bucketName]
+	bucketId, ok := e.bucketCache[bucketName]
 	e.bucketCacheLock.RUnlock()
 	if !ok {
 		err := fmt.Errorf("не удалось найти бакет в кеше")
@@ -176,7 +176,7 @@ func (e *Endpoint) CreateImage(ctx context.Context, bucketName string, file []by
 		return nil, status.InternalError
 	}
 
-	image, err := e.dbService.CreateImage(ctx, id)
+	image, err := e.dbService.CreateImage(ctx, bucketId)
 	if err != nil {
 		err = fmt.Errorf("не удалось добавить изображение в БД: %w", err)
 		e.logger.Error(ctx, err, zap.String("bucket_name", bucketName))

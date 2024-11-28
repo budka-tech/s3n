@@ -133,7 +133,18 @@ func (g GrpcServer) CreateImage(ctx context.Context, request *pb.CreateImageRequ
 		maxSize := int(*request.MaxSize)
 		MaxSize = &maxSize
 	}
-	img, status := g.endpoint.CreateImage(ctx, request.BucketName, request.File, request.FileExtension, request.Quality, MaxSize)
+	var Id *uuid.UUID
+	if request.Id != nil && len(request.Id) != 0 {
+		id, err := uuid.FromBytes(request.Id)
+		if err != nil {
+			g.logger.Error(ctx, fmt.Errorf("ошибка парсинга uuid: %s", err))
+			return &pb.CreateImageResponse{
+				Status: st.IncorrectValue,
+			}, nil
+		}
+		Id = &id
+	}
+	img, status := g.endpoint.CreateImage(ctx, request.BucketName, request.File, request.FileExtension, request.Quality, MaxSize, Id)
 	return &pb.CreateImageResponse{
 		Image:  imageToProto(img),
 		Status: status,

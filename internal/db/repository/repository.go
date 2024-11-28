@@ -16,6 +16,7 @@ type Repository interface {
 
 	// Методы для Image
 	InsertImage(ctx context.Context, bucketID int16) (*models.Image, error)
+	AddImage(ctx context.Context, bucketId int16, id uuid.UUID) error
 	GetImageByID(ctx context.Context, id uuid.UUID) (*models.Image, error)
 	GetImageWithBucket(ctx context.Context, id uuid.UUID) (*models.Image, *models.Bucket, error)
 	DeleteImageByID(ctx context.Context, id uuid.UUID) error

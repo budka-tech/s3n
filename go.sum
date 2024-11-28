@@ -51,8 +51,8 @@ github.com/budka-tech/envo v0.0.1 h1:/EM2a8KQvVl6cDlGCvUrPaR7EDrCC0OcY4RuH5RNZbo
 github.com/budka-tech/envo v0.0.1/go.mod h1:HzYsjldl0FiJrr0FlbeHV8s6HGPQnG+CLOhtBd1kZtU=
 github.com/budka-tech/logit-go v0.1.6 h1:8h4us8RC5M4ZjvborSeyJ/8fTMqz6mGOb30lNDDEhOc=
 github.com/budka-tech/logit-go v0.1.6/go.mod h1:aWtBf8rlVmP/DCgKrl/1wSdbQzXGQeqARFnku150Jj4=
-github.com/budka-tech/snip-common-go v0.0.34 h1:PA27lptpf0MY0hOSGWMTW4PCxDMWxqbyDvMtgVnFai8=
-github.com/budka-tech/snip-common-go v0.0.34/go.mod h1:OGQs1YasjI8bkhPtb/0GOfdWEEqOXXhOj3EGRYP0Yy8=
+github.com/budka-tech/snip-common-go v0.0.35 h1:X/msgugwFXpC1LOJCKN94fH9hhBGXemjs8P4l22ly3c=
+github.com/budka-tech/snip-common-go v0.0.35/go.mod h1:OGQs1YasjI8bkhPtb/0GOfdWEEqOXXhOj3EGRYP0Yy8=
 github.com/budka-tech/spg v0.0.1 h1:PWNs7VXT/tFtcXjadWE5tPmjDBtmKwBAnXWzFxpmCz8=
 github.com/budka-tech/spg v0.0.1/go.mod h1:DxgxaEdUbHHNDibctROulqy9oQ5hBF0UceXOtuU+mOA=
 github.com/cockroachdb/apd v1.1.0 h1:3LFP3629v+1aKXU5Q37mxmRxX/pIu1nijXydLShEq5I=

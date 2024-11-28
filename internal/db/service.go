@@ -42,6 +42,10 @@ func (s *DBService) CreateImage(ctx context.Context, bucketID int16) (*models.Im
 	return s.repo.InsertImage(ctx, bucketID)
 }
 
+func (s *DBService) AddImage(ctx context.Context, bucketID int16, id uuid.UUID) error {
+	return s.repo.AddImage(ctx, bucketID, id)
+}
+
 // GetImage получает изображение по ID
 func (s *DBService) GetImage(ctx context.Context, id uuid.UUID) (*models.Image, error) {
 	return s.repo.GetImageByID(ctx, id)

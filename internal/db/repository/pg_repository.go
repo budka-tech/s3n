@@ -82,6 +82,15 @@ func (r *PostgresRepository) InsertImage(ctx context.Context, bucketID int16) (*
 	return &models.Image{ID: id, BucketID: bucketID}, nil
 }
 
+func (r *PostgresRepository) AddImage(ctx context.Context, bucketId int16, id uuid.UUID) error {
+	query := `INSERT INTO image (bucket_id, id) VALUES ($1, $2) RETURNING id`
+	err := r.pool.QueryRow(ctx, query, bucketId, id).Scan(&id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 // GetImageByID возвращает изображение по его ID
 func (r *PostgresRepository) GetImageByID(ctx context.Context, id uuid.UUID) (*models.Image, error) {
 	var image models.Image
