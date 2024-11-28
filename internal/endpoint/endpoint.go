@@ -188,7 +188,7 @@ func (e *Endpoint) CreateImage(ctx context.Context, bucketName string, file []by
 		err = fmt.Errorf("не удалось загрузить файл на S3: %w", err)
 		e.logger.Error(ctx, err, zap.String("bucket_name", bucketName), zap.String("image_id", image.ID.String()))
 		{
-			err := e.dbService.DeleteBucket(ctx, id)
+			err := e.dbService.DeleteImage(ctx, image.ID)
 			if err != nil {
 				err = fmt.Errorf("не удалось очистить изображение в БД: %w", err)
 				e.logger.Error(ctx, err, zap.String("bucket_name", bucketName), zap.String("image_id", image.ID.String()))
